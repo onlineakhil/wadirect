@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="manifest" href="/webmanifest.json" />
+    <title>Test Title</title>
+    <script>
+        function goapp(nummer)
+        {
+        nummer = nummer.replace(/\D/g,'');
+        nummer = nummer.replace(/^0+/, '');
+        
+        window.location = 'https://api.whatsapp.com/send?phone=' + nummer;
+        return false;}
+        
+        if ('serviceWorker' in navigator) {
+            window.addEventListener("load", () => {
+            navigator.serviceWorker.register('/generate-sw.js')
+            .then(reg => console.log("Service worker registered"))
+            .catch(err => console.error(`Service Worker Error: ${err}`));
+            });
+        } else {
+            console.log("Service Worker is not supported by browser.");
+        }
+        
+        function sharethis()
+        {
+        if (navigator.share) {
+          navigator.share({
+            title: 'WA Direct',
+            text: 'Send WhatsApp message without saving contact',
+            url: 'https://onlineakhil.github.io/contact',
+          })
+            .then(() => console.log('Successful share'))
+            .catch((error) => console.log('Error sharing', error));
+        }}
+    </script>
+    <style>
+
+    </style>
+  </head>
+  <body class="gradient-bg">
+
+    <nav class="navbar nav-custom">
+        <div class="container">
+          <a href="#" class="navbar-brand" data-bs-toggle="modal" data-bs-target="#popupMenu"><img class="icon-menu" src="./menu-icon.svg"/></a>
+          <span class="d-flex">
+            <a href="#" onclick="sharethis()"><img class="icon-menu" src="./share-icon.svg"/></a>
+            <!-- <button onclick="sharethis()">share</button> -->
+          </span>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="intro-person">
+                <img class="" src="./image.png"/>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="content">
+                <h2 class="title">WA Direct 🚀</h2>
+                <p class="">Enter the phone number you want to
+                    WhatsApp in international format. 
+                    eg. 919567933669
+                </p>
+
+                <form name="whatsapp" action="" onsubmit="return false">
+                    <div class="input-group mb-3">
+                        <input maxlength="22" autofocus type="tel*" pattern="[0-9]*" novalidate name="mobilenumber" class="form-control" placeholder="WhatsApp Number">
+                    </div>
+                    <button onclick="goapp(form.mobilenumber.value)" class="btn btn-primary" type="submit">Send Message <i class="btn-icon bi bi-arrow-right"></i></button>
+                </form>
+
+                <p style="padding-top: 20px;">facing some issues? <a href="#" class="link">let me know!</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<!-- Popup Menu -->
+<div class="modal fade" id="popupMenu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">👋🏻 Hello There</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        content
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Done !</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="pinstall">
+    <br>
+    Tap
+    <img  height="4%" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAACtCAYAAAB7l7tOAAAAAXNSR0IArs4c6QAAAAlwSFlzAABa5AAAWuQBuyxkRwAAAi9pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDUuNC4wIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyI+CiAgICAgICAgIDx4bXA6Q3JlYXRvclRvb2w+d3d3Lmlua3NjYXBlLm9yZzwveG1wOkNyZWF0b3JUb29sPgogICAgICAgICA8dGlmZjpDb21wcmVzc2lvbj41PC90aWZmOkNvbXByZXNzaW9uPgogICAgICAgICA8dGlmZjpZUmVzb2x1dGlvbj41OTE8L3RpZmY6WVJlc29sdXRpb24+CiAgICAgICAgIDx0aWZmOlhSZXNvbHV0aW9uPjU5MTwvdGlmZjpYUmVzb2x1dGlvbj4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CvYezhEAAArqSURBVHgB7Z1/jFTVFcfPW3ZXQNcfrKAgWhABRa20aIg2GhYFUURKKxYXa7XAaktMqIm6u6zNBn809I82SqzGH5X6qy2LirVUKopomzZNrX+1lbZq0tgqtWr9UeXn7vV7ZmdmVzLz7sze2XnvnD03udn37r3n3nO+n7n3vXk/ZiMaSqndXY5wF9I71Ez3RPuGQujRUAgyE+Nq10KO7sY2x/w0fUSLaF20R3v8NdoDzMTHM9fRXdjOfaAvoAb6KbW4Ou3x5wLWG2e7a0ZwDyIPKxDkY1RPS6gz2l+gTkWRbsDtbgkoPYxcCG4OYBcgN2uFrHeJbnXzQHC9By5DXkx76U4ip/LDrjIoWu0W4Ji7EfDqmWBJKaIHqI6WYyb3lNReSCN9gNvdfGj/OHLpcHOwIrofkFs0Qda1RLe5s8Hq5wOCy5AdLaM9tJY3tSQ9M7jDzaYeegpgRlYAzu10W7SqAv0k3oUOwB1uFuBurhDcHJQfAvJ1uR2pf+Uv0avd6YD7RIXhMs/vULu7SSrYnN+yAbe5mThuPodgDs8FVOG/awC5s8J9VrU7uUt0qzuDamgr1DqsCop9F8v1zVUYp+JDyJzBrW4G4D5TCtwRlbnavIbaXHvF1a9Ch/IA3+ROBdwt0Ma7LJ84mmgaclxaelpcbb+6iG4F5NZ+JSI2ZQFud6dQd+aYe6RP3eNHEW29iqgu7io0OllzHlHLGb7esvURfQ/H5OtLbJ2KZnIAt7lp2RMqz5wkmngE0fPLiMaXcHSOcBZy10Kiy6eXzGMtIK8suXXCDWUA7nAn4U7uNuQxPr0mMNzlRMdlF3DH16c8qQaQ13+VqLm05ZpPTNdhuf6Wp9tUVKcfcIebhO+5fEJ1lE+xcYf2Lsuf6zs6v7dnP+2Ks9u9n17m+mFQ4sFLiJZ8Pq51vi7Ch+1OQL46X5LSjXQD7nATAfd5aDfepx/D5WX5hMZ8y/9ha06PQw8x6clXqA3V27lJDvLCk3jPmxjyjwD5696WCTZIL+BWNwFotkObY336HN1AtA1wp/Sden0Em/lRFGVmZ5z9+7tpN+ovQn6R2/FJ2YbLiBacyHveVAPID+D25FJvy4QapBPwandM9iLGcT5djsSthWdwtjz1s3DnAe7vfba5erT9GNsLkP/AZfWAvBEP+syfynveNAxH+Z8AMj4W6UvpA3yDGwfBeFk+wSdXI+A++02iU/uOzv+HzYUA9juf7YH1sPkQZecj/5HrGHIXkJ07ife8iSE/BMhf87ascoN0AW53Y6k2A3eyT4dRI3rhnjY235JnIcP9bb6kzA3YfgCTucgvsSlfBfsFjrBNx/OeN/VCbnMXe1tWsUF6AF/vjkbc25Cn+OI/AnC3YuZO74PLx9FFAPQbn62vHn28jzZzkP/EbUcC8i+vIJo1kfe8qQ7H5K7MI0PeptVpkA7Aba4Rj8r8GiF7T20aDiLaDMG/OC4vEMNdCDB846EiKQv5AnT2Z+4wB/mcCbznTfVYrjfiYgg/OpR4Sh5wpxuFT/2zUML7DfSQeqItVxKd2XfqtQd2PHP5e3JFE/r8Lzo8F/kv3PHBGPspfLBmes/puXXmebAu4qdMEk7JA95L10ID74XCg2p7z2zP6oO7D3ZLAGLLYGmIvt9G3wzprzzGoVg9eLnud1LHxcXSCHzNW0eLHU7XkkvJA66nmzPfJWM04JMdFvb8yflGObib8iWDtNEP8is8BH8te7GFaMYx3gFfRVzzqCvq9rYcxAbJA8ZzyG9cQytxifCNQnEOx8zdtJTovEn5Wn7NpBnCP54vGeQNjPUfDDEX+TUe6vDhvYeKYjN56mjqfnQxfZtujQrGxH1UKyUO2Dk3fPx42vTopXTstWd+Nmxelp8A3Ll9MzcHlx9qr2oC5H9hwCbk13lgnsnPLSM6+YDbH7z/wnIadtl0egSxncJtk0yJA0bwNyLP5dt2t+O8c9VZvXLwJcOf4bLBvCl5efiu0EoI3ZUvqfIGxuYZya/EvMlDjz4Y3+uW46GCLGSe0bx/1CFcS3xbcwMgI5LkEuZI4un78OBLyHMY8g8uJOoGSj5b/fK0vG892FoGgdfnSxLagA//ADT+GG5HnjAGkJ/+BtE1TxLd/xUi3s+md/CXDyWJHoMTBwwBdkEwvg68AflihnzHRVmJev8w3BVpgJvzCr78Ez7Pwf4LyOP43vOvALlf2ont2WiXOTHrV171zTQs0QQh+PvsYuQDz4p5Wb4a9T+uujKeAeHTq2jShJxZrvs15/0m1CcOl31KBWB2BILsxR8cdTMvjnERw12F8vt4J40Jvv0dfs1Gfivr3795H+U7svuJ/0kNYFYiC/lSbD6CfB327+DyNCf4+Df4x5BfQm7K7qfG5cSPwQcqAYG6cXy7An/52Csiwdcd8HlmGn1O1QzO0UyjUDnfiv1Nq8+pBFxMRCsvXwEDXL5moiwMsChc5TtrgMvXTJSFARaFq3xnDXD5momyMMCicJXvrAEuXzNRFgZYFK7yna3FM7ybyzdL0KKOrsIv0b2diAedbgztw7tIglIt7tngFrugtLsiP3Q2sIB57BpZetkSPTDUYqwMsBhUA3NUHOBFJ1fld7EKqpnk2AUdKqFQHGC85N1QQlyD0iTJsQcakDjAAw10qNoZYOXkYx/Z4Zest69IlwIja2jn2oRcWjGDdi79QkKDFxl21r1E7+0qUoniWMD8qzPF3r8p3uWg1/DrK4mkSaMpsbGLBcyM4pKnOs7U6iQoYIAlUArwMXaJxpPn/PA5v3GQppTMdeheBXjsS9IkBgDxy3h44adwigfs8N+iouixwqZDrxRafIKoU6VH4y2OJ2FRwLZEK/+cGmADrFwB5eHZDDbAyhVQHp7NYAOsXAHl4dkMNsDKFVAens1gA6xcAeXh2Qw2wMoVUB6ezWADrFwB5eHZDDbAyhVQHp7NYAOsXAHl4dkMNsDKFVAens1gA6xcAeXh2Qw2wMoVUB6ezWADrFwB5eHZDDbAyhVQHp7NYAOsXAHl4dkMNsDKFVAens1gA6xcAeXh2Qw2wMoVUB6ezWADrFwB5eHZDDbAyhVQHp7NYOWAY3/KUEPsW66kHT2OTi8WSz3Rm0n9/nQxnypZrh7w2Abvbzx3V1LQtPVlS3TaiFTYHwNcYUHT1p36JRqCr0Q+LEb4t2LqxFepB4zfeH5ZPKWAAGyJDhBPgqkBlkApwEcDHCCeBFMDLIFSgI8GOEA8CaYGWAKlAB8NcIB4EkwNsARKAT4a4ADxJJgaYAmUAnw0wAHiSTA1wBIoBfhogAPEk2BqgCVQCvDRAAeIJ8HUAEugFOCjAQ4QT4KpAZZAKcBHAxwgngRTAyyBUoCPBjhAPAmmBlgCpQAfDXCAeBJMDbAESgE+GuAA8SSYGmAJlAJ8NMAB4kkwNcASKAX4aIADxJNgaoAlUArw0QAHiCfB1ABLoBTgowEOEE+CqQGWQCnARwMcIJ4EUwMsgVKAjwY4QDwJpgZYAqUAHw1wgHgSTA2wBEoBPhrgAPEkmBpgCZQCfDTAAeJJMDXAEigF+GiAA8STYGqAJVAK8NEAB4gnwdQAS6AU4KMBDhBPgqn/F9873XAJgZiPhRWIBfzuJ8QzfFdhUytNgwLv7o33wpboeH3E1xpg8QjjAzDA8fqIrzXA4hHGB2CA4/URX2uAxSOMD6B2cmN8A6uVrUDkkGSHYN7HKWBLdJw6CuoMsAKIcSEY4Dh1FNR9CoIpskm1gw8QAAAAAElFTkSuQmCC">
+     and
+    <img  height="3%" src="data:image/png;base64,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">
+     <em>add to homescreen</em> to install this service as a web app
+</div>
+
+<script>
+    document.getElementById("pinstall").style.visibility="hidden";
+    
+    const isIos = () => {
+      const userAgent = window.navigator.userAgent.toLowerCase();
+      return /iphone|ipad|ipod/.test( userAgent );
+    }
+    // Detects if device is in standalone mode
+    const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+    
+    // Checks if should display install popup notification:
+    if (isIos() && !isInStandaloneMode()) {document.getElementById("pinstall").style.visibility="visible";}
+    
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
