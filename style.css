@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
+    font-family: Lato;
+}
+.bg-grey {
+    background-color: #3e3e3e;
+}
+.gradient-bg {
+    background: linear-gradient(168.3deg, #2CD77F 0%, #109B7E 100%);
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 450px !important;
+}
+/* .container-fluid {
+    min-height: 100vh;
+} */
+.intro-person {
+    text-align: center;
+}
+.content {
+    background-color: white;
+    padding: 50px 30px;
+    border-radius: 30px;
+}
+.title {
+    text-align: center;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+}
+p {
+    color: #BEC8C4;
+    text-align: center;
+    font-size: 14px;
+    line-height: 22px;
+}
+.form-control {
+    text-align: center;
+    border: 1px solid #22bb7f !important;
+    color: #000000;
+    padding: 0.6rem 0.75rem !important;
+    border-radius: 8px !important;
+}
+.form-control:focus {
+    color: #000000;
+    background-color: #fff;
+    box-shadow: 0 0 0 0.25rem rgb(34 187 127 / 11%) !important;
+}
+.btn-primary {
+    width: 100%;
+    background-color: #20BC7F !important;
+    border-color: #20BC7F !important;
+    padding: 0.6rem 0.75rem !important;
+    border-radius: 8px !important;
+}
+.btn-primary:hover {
+    width: 100%;
+    background-color: #119e7e !important;
+    border-color: #119e7e !important;
+}
+.btn-check:focus+.btn-primary, .btn-primary:focus {
+    box-shadow: 0 0 0 0.25rem rgb(34 187 127 / 24%) !important;
+}
+
+.link {
+    color: #109B7E;
+    text-decoration: none;
+    font-weight: bold;
+}
+.link:hover {
+    color: #000000;
+}
+
+.modal {
+    backdrop-filter: blur(3px) !important;
+}
+.modal-content {
+    border-radius: 15px !important;
+}
+.icon-menu:hover,  .icon-menu:focus, .icon-menu:focus-visible {
+    background: #0000000f !important;
+    border-radius: 8px !important;
+}
+.btn-icon {
+    transition: .15s linear;
+}
+.btn-primary:hover .btn-icon {
+    margin-left:10px;
+    transition: .15s linear;
+}
+
+@media (max-width: 575.98px) { 
+    .content {
+        border-radius: 30px 30px 0 0;
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+        padding: 50px 30px 10px 30px;
+    }
+ }
